@@ -46,7 +46,7 @@ O domínio da aplicação compreende a gestão do tempo, organização da rotina
 ### Banco de Dados
 - PostgreSQL
 
-##10 Arquitetura Inicial
+### Arquitetura Inicial
 Ainda não desenvolvida inicialmente para esta etapa.
 
 ### Estrutura Prevista do Projeto
@@ -59,6 +59,7 @@ Ainda não desenvolvida inicialmente para esta etapa.
        │
        ▼ (Consultas / Persistência)
 [ Banco de Dados (PostgreSQL) ]
+```text
 
 ### Escopo Inicial
 O escopo inicial da Etapa 01 engloba a especificação funcional do sistema, 
