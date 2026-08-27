@@ -1,16 +1,16 @@
 # My Study — Plataforma de Gestão de Estudos e Acompanhamento Acadêmico
 
-##1 Sobre o Projeto
+## Sobre o Projeto
 O **My Study** é uma aplicação Web desenvolvida para auxiliar estudantes na organização de suas rotinas acadêmicas. O sistema centraliza o gerenciamento de disciplinas, a divisão de conteúdos por módulos/tópicos e o agendamento de tarefas em uma agenda inteligente com prevenção de conflitos de horário e acompanhamento por cronômetro interativo.
 
-##2 Problema
+## Problema
 Estudantes enfrentam acúmulo de conteúdos e dificuldade para visualizar o progresso real em suas matérias. A falta de acompanhamento granular por tópicos gera incerteza sobre o que já foi estudado e o que falta concluir. Além disso, o controle manual em agendas físicas ou bloco de notas não impede a sobreposição acidental de compromissos e não oferece atualização automática de pendências atrasadas.
 
 ## Objetivo
 - **Objetivo Principal:** Oferecer uma plataforma Web centralizada para planejamento de estudos, controle de conteúdo programático e gestão de cronograma sem sobreposição de horários.
 - **Objetivo Secundário:** Proporcionar autonomia ao estudante por meio de métricas visuais de progresso e identificação automática de tarefas em atraso.
 
-##3 Principais Funcionalidades
+## Principais Funcionalidades
 - **Cadastro e Autenticação de Usuários:** Registro e login seguro com validação de e-mail único.
 - **Gerenciamento Hierárquico de Conteúdos (CRUD Encadeado):** Estruturação dependente em Matérias ➔ Módulos/Tópicos ➔ Atividades.
 - **Agendamento com Trava Anti-Conflito de Horário:** Validação que impede a sobreposição de tarefas no mesmo intervalo de tempo.
@@ -19,10 +19,10 @@ Estudantes enfrentam acúmulo de conteúdos e dificuldade para visualizar o prog
 - **Dashboard e Relatórios Visuais de Desempenho:** Painel com pendências do dia, alertas de atraso e gráficos de progresso por matéria.
 - **Trava de Segurança para Ações Críticas:** Confirmação obrigatória antes da exclusão de dados do sistema.
 
-##4 Domínio
+## Domínio
 O domínio da aplicação compreende a gestão do tempo, organização da rotina acadêmica universitária/pós-graduação e acompanhamento do rendimento escolar de estudantes.
 
-##5 Entidades Principais
+## Entidades Principais
 - **Usuário (`User`):** Representa o estudante cadastrado no sistema.
 - **Matéria (`Subject`):** Disciplina acadêmica cadastrada pelo estudante.
 - **Módulo / Tópico (`Topic`):** Divisão do conteúdo programático de uma matéria.
@@ -30,7 +30,7 @@ O domínio da aplicação compreende a gestão do tempo, organização da rotina
 - **Histórico de Sessões de Estudo (`StudySession`):** Registro de tempo cronometrado dedicado a uma atividade.
 - **Relatório e Histórico Consolidado (`PerformanceReport`):** Entidade conceitual calculada para compilar métricas globais e histórico.
 
-##6 Tecnologias
+## Tecnologias
 
 ### Front End
 - HTML5 / CSS3 / JavaScript (ES6+)
@@ -47,6 +47,7 @@ O domínio da aplicação compreende a gestão do tempo, organização da rotina
 - PostgreSQL
 
 ##10 Arquitetura Inicial
+Ainda não desenvolvida inicialmente para esta etapa.
 
 ### Estrutura Prevista do Projeto
 
@@ -58,3 +59,37 @@ O domínio da aplicação compreende a gestão do tempo, organização da rotina
        │
        ▼ (Consultas / Persistência)
 [ Banco de Dados (PostgreSQL) ]
+
+### Escopo Inicial
+O escopo inicial da Etapa 01 engloba a especificação funcional do sistema, 
+definição do público-alvo, modelagem conceitual das 6 entidades do domínio e 
+detalhamento completo em docs/proposta.md.
+
+### Desenvolvimento
+O desenvolvimento será realizado de forma incremental ao longo do semestre, 
+adotando boas práticas de engenharia de software, separação clara entre 
+cliente e servidor, e validações de regras de negócio.
+
+### Versionamento
+O versionamento do código e da documentação é mantido estritamente via Git e 
+hospedado no GitHub. Cada etapa entregável da disciplina é marcada por uma tag 
+específica (ex: etapa-01, etapa-02, ..., final).
+
+### Execução
+(As instruções detalhadas de instalação de dependências e execução do 
+servidor/cliente serão adicionadas nas etapas de implementação do código-fonte).
+
+### Testes
+(As instruções de execução de testes unitários e de integração serão incluídas 
+conforme o avanço das etapas de código).
+
+### Decisões e Limitações
+Decisões: Optou-se pela arquitetura REST com React e Node.js para suporte ao 
+CRUD encadeado, trava anti-conflito.
+
+### Responsabilidade sobre as Informações
+As informações contidas nesta documentação refletem a especificação inicial do 
+projeto para fins acadêmicos.
+
+### Licença
+Este projeto é de uso acadêmico. Todos os direitos reservados.
