@@ -1,7 +1,7 @@
-# Proposta e Especificação do Projeto: StudyFlow
+# Proposta e Especificação do Projeto: My Study
 
 ## 1. Proposta
-O **StudyFlow** é uma aplicação Web desenvolvida para auxiliar estudantes na organização de suas rotinas acadêmicas. O sistema centraliza o gerenciamento de disciplinas, a divisão de conteúdos por módulos/tópicos e o agendamento de tarefas em uma agenda inteligente com prevenção de conflitos de horário.
+O **My Study** é uma aplicação Web desenvolvida para auxiliar estudantes na organização de suas rotinas acadêmicas. O sistema centraliza o gerenciamento de disciplinas, a divisão de conteúdos por módulos/tópicos e o agendamento de tarefas em uma agenda inteligente com prevenção de conflitos de horário.
 
 ## 2. Problema
 Estudantes enfrentam acúmulo de conteúdos e dificuldade para visualizar o progresso real em suas matérias. A falta de acompanhamento granular por tópicos gera incerteza sobre o que já foi estudado e o que falta concluir. Além disso, o controle manual em agendas físicas ou bloco de notas não impede a sobreposição acidental de compromissos e não oferece atualização automática de pendências atrasadas.
@@ -152,14 +152,13 @@ Estudantes universitários e de pós-graduação que precisam gerenciar múltipl
 - **Persistência:** PostgreSQL.
 
 ## 10. Diagrama Inicial
-[ Cliente / Browser (HTML5 / CSS3 / JS + React) ]
-│
-│ (Requisições HTTP / JSON - API REST)
-▼
-[ Servidor Web (Node.js + Express / JS ou TS) ]
-├── Validação de Conflito de Horário
-└── Atualizador Automático de Status (Atrasado)
-│
-│ (Queries SQL)
-▼
-[ Banco de Dados ] (PostgreSQL)
+```text
+[ Cliente Web / Mobile (HTML5 / CSS3 / JS + React) ]
+              │
+              ├──> Requisições HTTP (API REST / JSON)
+              ▼
+[ Servidor Backend (Node.js + Express/ JS ou TS) ]
+              │
+              ├──> Operações e Consultas SQL
+              ▼
+[ Banco de Dados Relacional (PostgreSQL) ]
