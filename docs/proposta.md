@@ -1,90 +1,165 @@
-# Proposta e Especificação do Projeto: My_Study
+# Proposta e Especificação do Projeto: StudyFlow
 
-## 1. Nome da Aplicação
-**My_Study** (Plataforma de Gestão de Estudos e Acompanhamento Acadêmico)
+## 1. Proposta
+O **StudyFlow** é uma aplicação Web desenvolvida para auxiliar estudantes na organização de suas rotinas acadêmicas. O sistema centraliza o gerenciamento de disciplinas, a divisão de conteúdos por módulos/tópicos e o agendamento de tarefas em uma agenda inteligente com prevenção de conflitos de horário.
 
-## 2. Descrição do Problema
-Estudantes universitários frequentemente enfrentam dificuldades para gerenciar o tempo e acumulam conteúdos, atividades 
-e revisões pós-aula. A falta de uma ferramenta centralizada para listar, priorizar e acompanhar o progresso de entregas 
-(como listas de exercícios, trabalhos e provas) gera desorganização e o efeito "bola de neve", onde prazos são perdidos 
-e a reprogramação de tarefas se torna caótica.
+## 2. Problema
+Estudantes enfrentam acúmulo de conteúdos e dificuldade para visualizar o progresso real em suas matérias. A falta de acompanhamento granular por tópicos gera incerteza sobre o que já foi estudado e o que falta concluir. Além disso, o controle manual em agendas físicas ou bloco de notas não impede a sobreposição acidental de compromissos e não oferece atualização automática de pendências atrasadas.
 
 ## 3. Público-Alvo
-- Estudantes universitários de graduação e pós-graduação.
-- Alunos que precisam gerenciar simultaneamente disciplinas, trabalhos e rotinas de estudo autônomo.
+Estudantes universitários e de pós-graduação que precisam gerenciar múltiplas disciplinas, acompanhar prazos e manter uma rotina de estudos estruturada.
 
-## 4. Objetivo Principal da Aplicação
-Fornecer um sistema web intuitivo para centralização, planejamento e execução de obrigações acadêmicas. A ferramenta 
-permite o controle de pendências por disciplina através de quadro Kanban, acompanhamento visual de progresso, temporizador 
-flexível de estudo (livre e Pomodoro) e realocação de prazos para evitar o acúmulo de tarefas.
+## 4. Objetivo (Principal e Secundário)
+- **Objetivo Principal:** Oferecer uma plataforma Web centralizada para planejamento de estudos, controle de conteúdo programático e gestão de cronograma sem sobreposição de horários.
+- **Objetivo Secundário:** Proporcionar autonomia ao estudante por meio de métricas visuais de progresso e identificação automática de tarefas em atraso.
 
----
+## 5. Funcionalidades
 
-## 5. Funcionalidades da Aplicação (Mínimo de 5)
-1. **Painel do Dia (Dashboard de Controle):** Exibição centralizada das tarefas agendadas para o dia, alerta de pendências 
-atrasadas e progresso percentual de cada disciplina.
-2. **Quadro Kanban de Tarefas por Disciplina:** Organização visual das atividades (A Fazer, Em Andamento, Concluído) filtradas 
-por matéria (ex: listas, provas, trabalhos).
-3. **Registro de Sessões com Timer Flexível:** Cronômetro integrado para execução de estudos, permitindo contagem livre ou técnica 
-Pomodoro (ciclos de 15 min com 5 min de intervalo).
-4. **Reagendamento de Tarefas Atrasadas:** Sistema de reprogramação de prazos pendentes para o próximo horário disponível antes da 
-data limite final.
-5. **Gerenciador de Disciplinas e Prioridades:** Cadastro de matérias com sinalização de nível de dificuldade, conteúdos acumulados 
-e barra de progresso de conclusão da ementa/atividades.
+### 5.1. Cadastro e Autenticação de Usuários
+- **Descrição:** Permite que o estudante crie uma conta individual e acesse a aplicação de forma segura.
+- **Passo a passo / Regras:**
+  - O usuário informa `nome`, `e-mail` e `senha` para se cadastrar.
+  - O sistema valida se o e-mail já está em uso antes de efetivar o registro.
+  - Para usuários cadastrados, o sistema realiza o login via e-mail e senha, autenticando o acesso aos seus dados individuais.
 
----
+### 5.2. Gerenciamento Hierárquico de Conteúdos (CRUD Encadeado)
+- **Descrição:** Estruturação dos conteúdos acadêmicos respeitando a hierarquia rígida de dependência do domínio.
+- **Passo a passo / Regras:**
+  - **CRUD de Matérias:** O usuário pode criar, listar, editar e excluir disciplinas.
+  - **CRUD de Módulos/Tópicos:** O usuário cria tópicos vinculados a uma matéria existente. *Regra de dependência:* Não é permitido criar um módulo sem que ele esteja associado a uma matéria.
+  - **CRUD de Atividades:** O usuário cria tarefas de estudo vinculadas a um módulo existente. *Regra de dependência:* Não é permitido criar uma atividade sem que ela esteja associada a um módulo/tópico.
 
-## 6. Entidades do Domínio (Mínimo de 3)
-1. **Usuário (`User`):** Credenciais de acesso e preferências de notificação (`id`, `nome`, `email`, `senha_hash`).
-2. **Disciplina (`Subject`):** Cadastro da matéria (`id`, `nome`, `cor_identificadora`, `nivel_dificuldade`, `tem_conteudo_acumulado`, `usuario_id`).
-3. **Atividade/Tarefa (`Task`):** Item a ser executado (`id`, `disciplina_id`, `titulo`, `tipo_atividade`, `data_limite`, `status`, `prioridade`).
-4. **SessaoEstudo (`StudySession`):** Registro do tempo dedicado (`id`, `tarefa_id`, `duracao_minutos`, `tipo_timer`, `data_execucao`).
+### 5.3. Agendamento com Trava Anti-Conflito de Horário
+- **Descrição:** Planejamento temporal de atividades impedindo a sobreposição de compromissos na rotina.
+- **Passo a passo / Regras:**
+  - Ao criar ou editar uma atividade, o usuário define a `data`, o `horário de início` e o `horário de término`.
+  - O sistema consulta a agenda do usuário e verifica se o intervalo solicitado entra em choque com outra atividade já agendada.
+  - Caso haja sobreposição, o sistema bloqueia a criação e exibe um alerta informando o conflito.
 
----
+### 5.4. Cronômetro Interativo de Estudo (Sessão Ativa)
+- **Descrição:** Interface de execução da atividade com contagem de tempo em tempo real.
+- **Passo a passo / Regras:**
+  - Ao iniciar o horário previsto da atividade, o usuário pode acionar um cronômetro/timer interativo na tela.
+  - O cronômetro contabiliza o tempo efetivamente dedicado àquela tarefa.
+  - Ao finalizar a contagem, a atividade pode ter seu status atualizado para "Finalizado".
 
-## 7. Descrição de Telas / Interfaces (Mínimo de 3)
-1. **Dashboard Principal:** Apresenta o resumo do dia ("O que fazer hoje"), alertas de tarefas atrasadas, atalhos rápidos de execução 
-e cards do progresso geral por disciplina.
-2. **Visão Kanban por Disciplina:** Interface em colunas ("A Fazer", "Em Andamento", "Concluído") permitindo filtrar por matéria específica 
-(ex: Criptografia) para ver sublistas de exercícios, provas e trabalhos.
-3. **Estação de Estudo Focado (Timer):** Tela de execução com seleção de modo (Tempo Livre ou Pomodoro 15/5), seletor de disciplina/tarefa 
-ativa e botão para finalizar e salvar o tempo estudado.
+### 5.5. Atualização Automática de Status ("Atrasado")
+- **Descrição:** Transição automática de estado para controle rigoroso de prazos expirados.
+- **Passo a passo / Regras:**
+  - O sistema compara continuamente o horário atual com o prazo/horário de término das atividades pendentes.
+  - Se o horário limite for ultrapassado e a atividade permanecer com status "A Fazer" ou "Em Andamento", o sistema altera automaticamente seu status para "Atrasado".
 
----
+### 5.6. Dashboard e Relatórios Visuais de Desempenho
+- **Descrição:** Painel central para acompanhamento diário e consolidação de métricas.
+- **Passo a passo / Regras:**
+  - Apresenta a listagem prioritária das atividades agendadas para o dia atual.
+  - Exibe alertas de atividades com status "Atrasado".
+  - Apresenta gráficos visuais (porcentagem de conclusão) mostrando o progresso acumulado de tópicos e matérias concluídas.
 
-## 8. Descrição de Operações / Requisitos Funcionais (Mínimo de 5)
-1. `POST /api/subjects` — Cadastrar uma nova disciplina e seus parâmetros de prioridade.
-2. `POST /api/tasks` — Criar uma nova tarefa (prova, trabalho ou lista de exercício) vinculada a uma disciplina.
-3. `PATCH /api/tasks/{id}/status` — Atualizar o status da tarefa no quadro Kanban (A Fazer -> Em Andamento -> Concluído).
-4. `PATCH /api/tasks/{id}/reschedule` — Reprogramar a data de execução de uma tarefa atrasada.
-5. `POST /api/sessions` — Gravar o tempo e tipo de sessão de estudo realizada no timer.
-6. `GET /api/dashboard/today` — Consultar as tarefas do dia atual e os índices de progresso por disciplina.
+### 5.7. Trava de Segurança para Ações Críticas
+- **Descrição:** Prevenção contra perda acidental de dados e históricos.
+- **Passo a passo / Regras:**
+  - Ao tentar excluir uma matéria, módulo ou atividade, o sistema exibe uma caixa de diálogo/modal de confirmação obrigatória.
 
----
+## 6. Entidades e Conceitos do Domínio
 
-## 9. Tecnologias Utilizadas
+### 6.1. Usuário (`User`)
+- **Descrição:** Representa o estudante que utiliza a aplicação e possui acesso exclusivo aos seus dados.
+- **Atributos principais:** `id`, `nome`, `email`, `senha_hash`, `data_cadastro`.
+- **Relacionamentos:** Possui várias Matérias (1 para N).
 
-### Cliente (Frontend)
-- HTML5 / CSS3 / JavaScript (ES6+)
-- React.js
+### 6.2. Matéria (`Subject`)
+- **Descrição:** Representa a disciplina acadêmica cadastrada pelo estudante.
+- **Atributos principais:** `id`, `usuario_id`, `nome`, `cor_identificadora`.
+- **Relacionamentos:** Pertence a um Usuário (N para 1) e possui vários Módulos/Tópicos (1 para N).
 
-### Servidor (Backend)
-- Node.js com Express
+### 6.3. Módulo / Tópico (`Topic`)
+- **Descrição:** Representa a divisão do conteúdo programático de uma matéria específica.
+- **Atributos principais:** `id`, `materia_id`, `titulo`, `ordem_exibicao`.
+- **Relacionamentos:** Pertence obrigatoriamente a uma Matéria (N para 1) e possui várias Atividades (1 para N).
 
-### Persistência (Banco de Dados)
-- PostgreSQL
+### 6.4. Atividade (`Task`)
+- **Descrição:** Representa a tarefa de estudo concreta vinculada a um módulo, contendo prazos, horários agendados e status de conclusão.
+- **Atributos principais:** `id`, `topico_id`, `descricao`, `data_agendamento`, `horario_inicio`, `horario_fim`, `tempo_decorrido_minutos`, `status` (*A Fazer, Em Andamento, Finalizado, Atrasado*).
+- **Relacionamentos:** Pertence obrigatoriamente a um Módulo/Tópico (N para 1) e possui vários registros de Sessões de Estudo (1 para N).
 
----
+### 6.5. Histórico de Sessões de Estudo (`StudySession`)
+- **Descrição:** Registro individual gerado a cada acionamento do cronômetro para medir o tempo gasto em uma atividade.
+- **Atributos principais:** `id`, `atividade_id`, `data_execucao`, `horario_inicio_real`, `horario_fim_real`, `duracao_minutos`, `observacoes`.
+- **Relacionamentos:** Pertence a uma Atividade (N para 1).
 
-## 10. Visão Geral da Solução (Diagrama Simples)
+### 6.6. Relatório e Histórico Consolidado (`PerformanceReport`)
+- **Conceito de Domínio / Visão Consolidada:** Entidade conceitual calculada pelo sistema para compilar e filtrar o histórico global do estudante.
+- **Métricas e Filtros:**
+  - **Histórico Passado:** Relatório de matérias/tópicos 100% concluídos e atividades finalizadas.
+  - **Visão Diária:** Atividades programadas e executadas no dia atual.
+  - **Projeção Futura:** Cronograma de atividades agendadas para os próximos dias/semanas.
+  - **Indicadores:** Percentual de conclusão por matéria e total de horas estudadas acumuladas.
 
-```text
-[ Cliente Web / Mobile (React.js) ]
-              │
-              ├──> Requisições HTTP (API REST / JSON)
-              ▼
-[ Servidor Backend (Node.js + Express) ]
-              │
-              ├──> Operações e Consultas SQL
-              ▼
-[ Banco de Dados Relacional (PostgreSQL) ]
+## 7. Interfaces Previstas
+
+### 7.1. Tela de Login e Cadastro de Usuário
+- **Objetivo:** Interface inicial para autenticação e criação de novas contas de estudantes.
+- **Elementos:** Formulário alternável de Cadastro e Login com campos para `Nome`, `E-mail` e `Senha`; mensagens de validação visual e botão de ação principal.
+
+### 7.2. Tela do Dashboard Principal (Visão do Dia e Indicadores)
+- **Objetivo:** Painel de controle de entrada do estudante, focado no planejamento diário e visão resumida do progresso.
+- **Elementos:** Seção "Atividades de Hoje", painel de Alertas de Atraso e gráfico visual (Chart.js) de desempenho geral por matéria.
+
+### 7.3. Tela de Gestão de Matérias, Módulos e Atividades (Visão Hierárquica)
+- **Objetivo:** Central de gerenciamento do conteúdo programático com navegação em árvore encadeada.
+- **Elementos:** Lista de Matérias com indicação de cor, expansão de Módulos com barra de progresso e listagem de Atividades vinculadas com ações de edição/status.
+
+### 7.4. Tela de Agenda Interativa e Agendamento com Anti-Conflito
+- **Objetivo:** Visualização do cronograma de estudos diário/semanal e agendamento seguro de horários.
+- **Elementos:** Grade horária em formato de calendário/agenda, modal de criação de atividades e componente de alerta em caso de sobreposição de horários.
+
+### 7.5. Tela do Cronômetro Interativo de Estudo (Sessão Ativa)
+- **Objetivo:** Interface limpa acionada durante a execução real de uma atividade.
+- **Elementos:** Relógio/Timer em destaque, dados da atividade ativa, controles (`Iniciar`, `Pausar`, `Finalizar Estudo`) e campo para anotações da sessão.
+
+### 7.6. Tela de Histórico e Relatórios Consolidados
+- **Objetivo:** Central de consulta ao histórico passado de estudos e projeções de cronogramas futuros.
+- **Elementos:** Filtros por período/matéria, relatório de matérias concluídas, histórico de sessões do cronômetro e projeção para os próximos dias.
+
+## 8. Operações Previstas
+
+### 8.1. Autenticação e Gestão de Usuários
+- Registrar um novo usuário no sistema salvando nome, e-mail e senha (com verificação de e-mail único).
+- Autenticar o usuário e retornar o token de sessão para acesso restrito às suas disciplinas.
+
+### 8.2. Gerenciamento Hierárquico de Conteúdos (CRUD Encadeado)
+- Cadastrar uma nova matéria vinculada ao usuário logado.
+- Cadastrar um novo módulo/tópico associado obrigatoriamente a uma matéria existente.
+- Criar uma nova atividade vinculada a um módulo, recebendo `descricao`, `data`, `horario_inicio` e `horario_fim`.
+
+### 8.3. Agendamento com Anti-Conflito e Atualização de Status
+- Consultar a agenda do usuário para verificar se o intervalo solicitado entra em choque com outra atividade agendada. Bloqueia a criação em caso de sobreposição.
+- Atualizar o status de uma atividade (*A Fazer, Em Andamento, Finalizado*).
+- Rotina do sistema que verifica tarefas pendentes com horário expirado e altera seu status para *Atrasado*.
+
+### 8.4. Execução do Cronômetro e Histórico
+- Registrar uma sessão de estudo concluída via cronômetro, salvando a duração em minutos e as observações no histórico.
+
+### 8.5. Relatórios e Indicadores
+- Buscar o resumo de tarefas do dia e a lista de pendências atrasadas para o usuário.
+- Calcular e retornar a taxa de conclusão de tópicos por matéria para alimentar os gráficos do cliente.
+- Consultar o histórico consolidado de matérias finalizadas, sessões realizadas e projeção de compromissos futuros com base em filtros por período.
+
+## 9. Tecnologias Pretendidas
+- **Cliente (Frontend):** HTML5, CSS3, JavaScript e React.
+- **Servidor (Backend):** Node.js, Express, JavaScript/TypeScript, API REST, JSON
+- **Persistência:** PostgreSQL.
+
+## 10. Diagrama Inicial
+[ Cliente / Browser (HTML5 / CSS3 / JS + React) ]
+│
+│ (Requisições HTTP / JSON - API REST)
+▼
+[ Servidor Web (Node.js + Express / JS ou TS) ]
+├── Validação de Conflito de Horário
+└── Atualizador Automático de Status (Atrasado)
+│
+│ (Queries SQL)
+▼
+[ Banco de Dados ] (PostgreSQL)
