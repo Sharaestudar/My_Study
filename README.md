@@ -60,37 +60,3 @@ Ainda não desenvolvida inicialmente para esta etapa.
        ▼ (Consultas / Persistência)
 [ Banco de Dados (PostgreSQL) ]
 ```text
-
-### Escopo Inicial
-O escopo inicial da Etapa 01 engloba a especificação funcional do sistema, 
-definição do público-alvo, modelagem conceitual das 6 entidades do domínio e 
-detalhamento completo em docs/proposta.md.
-
-### Desenvolvimento
-O desenvolvimento será realizado de forma incremental ao longo do semestre, 
-adotando boas práticas de engenharia de software, separação clara entre 
-cliente e servidor, e validações de regras de negócio.
-
-### Versionamento
-O versionamento do código e da documentação é mantido estritamente via Git e 
-hospedado no GitHub. Cada etapa entregável da disciplina é marcada por uma tag 
-específica (ex: etapa-01, etapa-02, ..., final).
-
-### Execução
-(As instruções detalhadas de instalação de dependências e execução do 
-servidor/cliente serão adicionadas nas etapas de implementação do código-fonte).
-
-### Testes
-(As instruções de execução de testes unitários e de integração serão incluídas 
-conforme o avanço das etapas de código).
-
-### Decisões e Limitações
-Decisões: Optou-se pela arquitetura REST com React e Node.js para suporte ao 
-CRUD encadeado, trava anti-conflito.
-
-### Responsabilidade sobre as Informações
-As informações contidas nesta documentação refletem a especificação inicial do 
-projeto para fins acadêmicos.
-
-### Licença
-Este projeto é de uso acadêmico. Todos os direitos reservados.
