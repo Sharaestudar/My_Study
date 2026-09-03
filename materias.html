@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>My Study - Cadastrar Matéria</title>
+</head>
+<body>
+    <header>
+        <h1>My Study</h1>
+        <nav>
+            <a href="dashboard.html">Dashboard</a> | 
+            <a href="materias.html">Matérias</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Cadastrar Matéria</h2>
+
+            <form action="dashboard.html" method="GET">
+                
+                <div>
+                    <label for="nome-materia">Nome da matéria:</label>
+                    <input type="text" id="nome-materia" name="nome_materia" required>
+                </div>
+
+                <div>
+                    <label for="carga-horaria">Carga Horária (horas):</label>
+                    <input type="number" id="carga-horaria" name="carga_horaria" required>
+                </div>
+
+                <div>
+                    <label for="conteudo">Conteúdo:</label>
+                    <input type="text" id="conteudo" name="conteudo">
+                </div>
+
+                <div>
+                    <label for="tarefas">Tarefas:</label>
+                    <input type="text" id="tarefas" name="tarefas">
+                </div>
+
+                <div>
+                    <button type="submit">Adicionar</button>
+                </div>
+
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>My Study &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
