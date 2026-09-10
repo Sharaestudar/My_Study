@@ -8,16 +8,11 @@
 </head>
 <body>
 
-    <main>
-        <section>
-            <!-- Logo e Boas-Vindas -->
-            <div>
-                <img src="assets/logo.png" alt="Logo My Study" width="100">
-                <p>Seja bem-vindo, preencha os dados para cadastro</p>
-            </div>
-
-            <!-- Formulário de Cadastro -->
-            <form action="index.html" method="POST">
+    <main class="auth-container">
+        <section class="auth-card">
+            <h2>Seja bem-vindo, preencha os dados para cadastro</h2>
+            
+            <form action="index.html" method="GET">
                 <div>
                     <label for="nome">Nome completo:</label>
                     <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
@@ -30,25 +25,22 @@
 
                 <div>
                     <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" 
-                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" 
-                           title="A senha deve ter no mínimo 8 caracteres, contendo pelo menos uma letra maiúscula, uma minúscula e um caractere especial." 
-                           placeholder="Sua senha" required>
+                    <input type="password" id="senha" name="senha" minlength="8" placeholder="Sua senha (mínimo 8 caracteres)" required>
                 </div>
 
                 <div>
-                    <label for="confirma-senha">Confirmar senha:</label>
-                    <input type="password" id="confirma-senha" name="confirma_senha" placeholder="Repita a senha" required>
+                    <label for="confirmar-senha">Confirmar senha:</label>
+                    <input type="password" id="confirmar-senha" name="confirmar_senha" minlength="8" placeholder="Repita a senha" required>
                 </div>
 
-                <button type="submit">Finalizar</button>
+                <button type="submit" class="btn-primary">Finalizar</button>
             </form>
+
+            <div class="auth-links">
+                <p>Já possui uma conta? <a href="index.html" class="link-inline">Fazer login</a></p>
+            </div>
         </section>
     </main>
-
-    <footer>
-        <p>StudyFlow &copy; 2026</p>
-    </footer>
 
 </body>
 </html>

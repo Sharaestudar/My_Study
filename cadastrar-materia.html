@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Study - Cadastrar Matéria</title>
+    <link rel="stylesheet" href="frontend/style.css">
+</head>
+<body class="app-layout">
+
+    <!-- Menu Lateral -->
+    <aside class="sidebar">
+        <h1>My Study</h1>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="grade.html" class="active">Grade</a>
+            <a href="cronograma.html">Cronograma</a>
+            <a href="#">Configuração</a>
+            <a href="index.html">Sair</a>
+        </nav>
+    </aside>
+
+    <!-- Conteúdo do Formulário -->
+    <main class="dashboard-content">
+        <header>
+            <h2>Nova Matéria</h2>
+            <p>Cadastre uma nova disciplina na sua grade.</p>
+        </header>
+
+        <section class="card-panel">
+            <form action="grade.html" method="GET">
+                <div>
+                    <label for="nome-materia">Nome da matéria:*</label>
+                    <input type="text" id="nome-materia" name="nome_materia" placeholder="Ex: Algoritmos, Redes, Sistemas..." required>
+                </div>
+
+                <div>
+                    <label for="topico">Tópico (ex: Prova, Trabalho, Projeto):</label>
+                    <input type="text" id="topico" name="topico" placeholder="Digite o tópico principal">
+                </div>
+
+                <div>
+                    <label for="descricao">Descrição / Atividade:</label>
+                    <textarea id="descricao" name="descricao" rows="3" placeholder="Detalhes das tarefas ou assuntos"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <button type="submit" class="btn-primary">Salvar matéria</button>
+                    <a href="grade.html" class="link-inline" style="align-self: center; text-align: center;">Cancelar</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>

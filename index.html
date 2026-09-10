@@ -8,42 +8,27 @@
 </head>
 <body>
 
-    <main>
-        <section>
-            <!-- Logo e Boas-Vindas -->
+<main class="auth-container">
+    <section class="auth-card">
+        <h2>Seja bem-vindo, faça seu login</h2>
+        <form action="dashboard.html" method="GET">
             <div>
-                <img src="assets/logo.png" alt="Logo My Study" width="100">
-                <p>Seja bem-vindo, faça seu login</p>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="Seu e-mail cadastrado" required>
             </div>
-
-            <!-- Formulário de Login -->
-            <form action="dashboard.html" method="POST">
-                <div>
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" placeholder="Seu e-mail cadastrado" required>
-                </div>
-
-                <div>
-                    <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" placeholder="Sua senha" required>
-                </div>
-
-                <button type="submit">Entrar</button>
-            </form>
-
-            <!-- Primeiro acesso (cadastro) / Recuperação de senha -->
             <div>
-                <p>
-                    <span>Primeira vez?</span>
-                    <a href="cadastro.html"><button type="button">Cadastre-se</button></a>
-                </p>
-                <p>
-                    <span>Esqueceu a senha?</span>
-                    <a href="recuperacao.html"><button type="button">Recuperação de senha</button></a>
-                </p>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" placeholder="Sua senha" required>
             </div>
-        </section>
-    </main>
+            <button type="submit" class="btn-primary">Entrar</button>
+        </form>
+
+        <div class="auth-links">
+            <p>Primeira vez? <a href="cadastro.html" class="link-inline">Cadastre-se</a></p>
+            <p>Esqueceu a senha? <a href="recuperacao.html" class="link-inline">Recuperar senha</a></p>
+        </div>
+    </section>
+</main>
 
     <footer>
         <p>StudyFlow &copy; 2026</p>

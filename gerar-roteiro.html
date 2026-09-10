@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Study - Gerar Roteiro</title>
+    <link rel="stylesheet" href="frontend/style.css">
+</head>
+<body class="app-layout">
+
+    <!-- Menu Lateral -->
+    <aside class="sidebar">
+        <h1>My Study</h1>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="grade.html">Grade</a>
+            <a href="cronograma.html" class="active">Cronograma</a>
+            <a href="#">Configuração</a>
+            <a href="index.html">Sair</a>
+        </nav>
+    </aside>
+
+    <!-- Conteúdo do Formulário -->
+    <main class="dashboard-content">
+        <header>
+            <h2>Gerar Roteiro</h2>
+            <p>Configure os parâmetros para montar sua rotina de estudos.</p>
+        </header>
+
+        <section class="card-panel">
+            <form action="cronograma.html" method="GET">
+                <div>
+                    <label for="materia">Matéria:*</label>
+                    <select id="materia" name="materia" required>
+                        <option value="">Selecione uma matéria cadastrada...</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="data-limite">Data limite:*</label>
+                    <input type="date" id="data-limite" name="data_limite" required>
+                </div>
+
+                <div>
+                    <label for="horario">Horário de encerramento:*</label>
+                    <input type="time" id="horario" name="horario" required>
+                </div>
+
+                <div>
+                    <label for="urgencia">Nível de Urgência:*</label>
+                    <select id="urgencia" name="urgencia" required>
+                        <option value="Baixo">Baixo</option>
+                        <option value="Moderado" selected>Moderado</option>
+                        <option value="Alto">Alto</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <button type="submit" class="btn-primary">Criar roteiro</button>
+                    <a href="cronograma.html" class="link-inline" style="align-self: center; text-align: center;">Cancelar</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>

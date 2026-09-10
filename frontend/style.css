@@ -1,13 +1,273 @@
-body{
-    margin: 0;
-    background: black;
-}
-.menuLat{
+/* 1. RESETS E PALETA DARK / ROXO */
+* {
     margin: 0;
     padding: 0;
-    height: 100vh;
-    width: 300px;
-    background-color:  rgb(31, 29, 29);
-    border-right: 3px;
-    border-color: solid gray;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #0f172a;        /* Fundo principal escuro */
+    --card-dark: #1e293b;      /* Cards e formulários */
+    --accent-purple: #8b5cf6;  /* Roxo principal dos botões */
+    --purple-hover: #7c3aed;   /* Hover dos botões */
+    --text-primary: #f8fafc;   /* Texto principal claro */
+    --text-secondary: #94a3b8; /* Labels e subtextos */
+    --border-color: #334155;   /* Bordas discretas */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/*  2. TELAS DE ACESSO (Login, Cadastro, Recuperação) */
+main.auth-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+.auth-card {
+    background: var(--card-dark);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: min(90%, 600px);
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.auth-card h1, .auth-card h2, .auth-card p {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.auth-card img {
+    display: block;
+    margin: 0 auto 1rem auto;
+    max-width: 150px;
+}
+
+form div {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+input, select, textarea {
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-purple);
+}
+
+/* Botão Principal */
+.btn-primary {
+    background-color: var(--accent-purple);
+    color: #ffffff;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--purple-hover);
+}
+
+/* Links de Navegação Inline (Substitui botões gigantes) */
+.auth-links {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.link-inline {
+    color: var(--accent-purple);
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: inherit;
+    padding: 0;
+}
+
+.link-inline:hover {
+    color: #a78bfa;
+}
+
+/* 3. ESTRUTURA INTERNA COM SIDEBAR (Dashboard, Grade, Cronograma) */
+body.app-layout {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 240px;
+    background-color: var(--card-dark);
+    border-right: 1px solid var(--border-color);
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-height: 100vh;
+}
+
+.sidebar h1 {
+    font-size: 1.4rem;
+    color: var(--accent-purple);
+    text-align: center;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sidebar nav a, .sidebar nav button {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.sidebar nav a:hover, .sidebar nav a.active {
+    background-color: var(--accent-purple);
+    color: #ffffff;
+}
+
+.dashboard-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Grid de Cards do Dashboard */
+.dashboard-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.card-panel {
+    background: var(--card-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.card-panel h3 {
+    color: var(--accent-purple);
+    font-size: 1.1rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.progress-bar {
+    background: var(--bg-dark);
+    border-radius: 4px;
+    height: 10px;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.progress-fill {
+    background: var(--accent-purple);
+    height: 100%;
+}
+
+/* Agenda Grid para o Cronograma */
+.agenda-semanal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.dia-coluna {
+    background: var(--card-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.75rem;
+    min-height: 180px;
+}
+
+/* 4. MEDIA QUERIES (BREAKPOINTS) */
+@media (max-width: 767px) {
+    body.app-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .agenda-semanal-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .agenda-semanal-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--card-dark);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    margin-top: auto;
 }
