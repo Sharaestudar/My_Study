@@ -98,19 +98,23 @@ Estudantes universitários e de pós-graduação que precisam gerenciar múltipl
 
 ## 7. Interfaces Previstas
 
-### 7.1. Tela de Login e Cadastro de Usuário
+### 7.1. Tela de Login e Cadastro de Usuário (`index.html` e `cadastro.html`)
 - **Objetivo:** Interface inicial para autenticação e criação de novas contas de estudantes.
 - **Elementos:** Formulário alternável de Cadastro e Login com campos para `Nome`, `E-mail` e `Senha`; mensagens de validação visual e botão de ação principal.
 
-### 7.2. Tela do Dashboard Principal (Visão do Dia e Indicadores)
+### 7.2. Tela de Recuperação de Senha (`recuperacao.html`)
+- **Objetivo:** Fluxo seguro para redefinição de acesso em caso de esquecimento de senha.
+- **Elementos:** Campo de e-mail cadastrado, validação via token enviado e redefinição de senha com critérios de segurança.
+
+### 7.3. Tela do Dashboard Principal (`dashboard.html`)
 - **Objetivo:** Painel de controle de entrada do estudante, focado no planejamento diário e visão resumida do progresso.
 - **Elementos:** Seção "Atividades de Hoje", painel de Alertas de Atraso e gráfico visual (Chart.js) de desempenho geral por matéria.
 
-### 7.3. Tela de Gestão de Matérias, Módulos e Atividades (Visão Hierárquica)
+### 7.3. Tela de Gestão de Matérias, Módulos e Atividades (`grade.html`)
 - **Objetivo:** Central de gerenciamento do conteúdo programático com navegação em árvore encadeada.
 - **Elementos:** Lista de Matérias com indicação de cor, expansão de Módulos com barra de progresso e listagem de Atividades vinculadas com ações de edição/status.
 
-### 7.4. Tela de Agenda Interativa e Agendamento com Anti-Conflito
+### 7.4. Tela de Agenda Interativa e Cronograma (`cronograma.html`)
 - **Objetivo:** Visualização do cronograma de estudos diário/semanal e agendamento seguro de horários.
 - **Elementos:** Grade horária em formato de calendário/agenda, modal de criação de atividades e componente de alerta em caso de sobreposição de horários.
 
@@ -127,6 +131,7 @@ Estudantes universitários e de pós-graduação que precisam gerenciar múltipl
 ### 8.1. Autenticação e Gestão de Usuários
 - Registrar um novo usuário no sistema salvando nome, e-mail e senha (com verificação de e-mail único).
 - Autenticar o usuário e retornar o token de sessão para acesso restrito às suas disciplinas.
+- Permitir recuperação segura de credenciais via e-mail e código de validação.
 
 ### 8.2. Gerenciamento Hierárquico de Conteúdos (CRUD Encadeado)
 - Cadastrar uma nova matéria vinculada ao usuário logado.
