@@ -2,34 +2,75 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Study - Dashboard</title>
+    <link rel="stylesheet" href="frontend/style.css">
 </head>
 <body>
-    
-    <header>
-        <h1>My Study</h1>
+
+    <!-- Menu do nav -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <h2>My Study</h2>
+        </div>
         <nav>
-            <a href="dashboard.html">Dashboard</a> | 
-            <a href="materias.html">Cadastrar Matéria</a>
+            <a href="grade.html"><button type="button">Grade</button></a>
+            <a href="cronograma.html"><button type="button">Cronograma</button></a>
+            <a href="relatorio.html"><button type="button">Relatório</button></a>
+            <a href="configuracao.html"><button type="button">Configuração</button></a>
+            <a href="index.html"><button type="button" class="btn-sair">Sair</button></a>
         </nav>
-    </header>
+    </aside>
 
-    <main>
+    <!-- Conteúdo principal do dashboard -->
+    <main class="dashboard-content">
+        
+        <!-- Boas-vindas -->
+        <header>
+            <h1>Dashboard</h1>
+            <p>Olá, <span id="nome-usuario">Usuário</span>! Veja o seu progresso hoje.</p>
+        </header>
 
-        <section>
-            <h2>Metas Cumpridas</h2>
-            <p><strong>0 / 0</strong> metas concluídas</p>
+        <!-- Progresso Geral -->
+        <section class="card-progresso-principal">
+            <div>
+                <h2>Meta</h2>
+                <p>Você completou <strong>0 de 0</strong> tópicos planejados.</p>
+            </div>
+            <!-- Indicador Circular / Gráfico de Porcentagem -->
+            <div class="grafico-pizza-container">
+                <div class="grafico-pizza">
+                    <span>0%</span>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Tarefas Pendentes</h2>
-            <p>Você possui <strong>0</strong> tarefas pendentes.</p>
-        </section>
+        <!-- Dois Retângulos Lado a Lado -->
+        <div class="dashboard-cards-grid">
+            
+            <!-- Pendências Atrasadas -->
+            <section class="card-detalhe">
+                <h2>Pendências Atrasadas</h2>
+                <p>Veja as pendências que estão atrasadas.</p>
+                <div class="contador-pendencias">
+                    <span>0</span>
+                </div>
+                <a href="pendencias.html"><button type="button">Visualizar Pendências</button></a>
+            </section>
+
+            <!-- Sessão de Estudo Atual -->
+            <section class="card-detalhe">
+                <h2>Sessão de Estudo Atual</h2>
+                <p>Analise sua sessão de estudo atual.</p>
+                <a href="sessao-estudo.html"><button type="button">Acessar Sessão</button></a>
+            </section>
+
+        </div>
 
     </main>
 
     <footer>
-        <p>My Study &copy; 2026</p>
+        <p>StudyFlow &copy; 2026</p>
     </footer>
 
 </body>

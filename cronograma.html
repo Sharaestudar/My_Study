@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Study - Cronograma</title>
+    <link rel="stylesheet" href="frontend/style.css">
+</head>
+<body>
+
+    <!-- Menu do nav -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <h2>My Study</h2>
+        </div>
+        <nav>
+            <a href="grade.html"><button type="button">Grade</button></a>
+            <a href="cronograma.html"><button type="button">Cronograma</button></a>
+            <a href="relatorio.html"><button type="button">Relatório</button></a>
+            <a href="configuracao.html"><button type="button">Configuração</button></a>
+            <a href="index.html"><button type="button" class="btn-sair">Sair</button></a>
+        </nav>
+    </aside>
+
+    <!-- Conteúdo principal do cronograma -->
+    <main class="dashboard-content">
+         
+        <header class="header-com-acao">
+            <div>
+                <h1>Cronograma</h1>
+                <p>Sua rotina de estudo inteligente.</p>
+            </div>
+            <button type="button" id="btn-gerar-roteiro">+ Gerar roteiro</button>
+        </header>
+
+        <!-- Formulário / Aba para Criar Novo Roteiro -->
+        <section id="secao-form-roteiro" class="card-detalhe">
+            <h2>Gerar roteiro</h2>
+
+            <form action="cronograma.html" method="POST">
+                <!-- Seleção da Matéria Cadastrada -->
+                <div>
+                    <label for="select-materia">Matéria:*</label>
+                    <select id="select-materia" name="materia" required>
+                        <option value="">Selecione uma matéria cadastrada...</option>
+                        <option value="engenharia-software">Engenharia de Software</option>
+                        <option value="banco-dados">Banco de Dados</option>
+                    </select>
+                </div>
+
+                <!-- Data Limite e Horário de Término -->
+                <div>
+                    <label for="data-limite">Data limite:*</label>
+                    <input type="date" id="data-limite" name="data_limite" required>
+                </div>
+
+                <div>
+                    <label for="horario-encerramento">Horário de encerramento:*</label>
+                    <input type="time" id="horario-encerramento" name="horario_encerramento" required>
+                </div>
+
+                <!-- Nível de Urgência -->
+                <div>
+                    <label for="nivel-urgencia">Nível de Urgência:*</label>
+                    <select id="nivel-urgencia" name="nivel_urgencia" required>
+                        <option value="urgente">Urgente</option>
+                        <option value="moderado" selected>Moderado</option>
+                        <option value="nao-urgente">Não urgente</option>
+                    </select>
+                </div>
+
+                <button type="submit">Criar roteiro</button>
+            </form>
+        </section>
+
+        <!-- Estrutura da Agenda Semanal -->
+        <section class="agenda-semanal-grid">
+            
+            <div class="dia-coluna">
+                <h3>Segunda</h3>
+                <!-- exemplo gerado pós-cadastro -->
+                <div class="card-roteiro urgente">
+                    <strong>Engenharia de Software</strong>
+                    <p>Até 18:00</p>
+                </div>
+            </div>
+
+            <div class="dia-coluna">
+                <h3>Terça</h3>
+            </div>
+
+            <div class="dia-coluna">
+                <h3>Quarta</h3>
+            </div>
+
+            <div class="dia-coluna">
+                <h3>Quinta</h3>
+            </div>
+
+            <div class="dia-coluna">
+                <h3>Sexta</h3>
+            </div>
+
+            <div class="dia-coluna">
+                <h3>Sábado</h3>
+            </div>
+
+            <div class="dia-coluna">
+                <h3>Domingo</h3>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>StudyFlow &copy; 2026</p>
+    </footer>
+
+</body>
+</html>

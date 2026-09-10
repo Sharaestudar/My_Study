@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Study - Grade de Estudos</title>
+    <link rel="stylesheet" href="frontend/style.css">
+</head>
+<body>
+
+    <!-- Menu do nav -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <h2>My Study</h2>
+        </div>
+        <nav>
+            <a href="grade.html"><button type="button">Grade</button></a>
+            <a href="cronograma.html"><button type="button">Cronograma</button></a>
+            <a href="relatorio.html"><button type="button">Relatório</button></a>
+            <a href="configuracao.html"><button type="button">Configuração</button></a>
+            <a href="index.html"><button type="button" class="btn-sair">Sair</button></a>
+        </nav>
+    </aside>
+
+    <!-- Conteúdo principal da grade -->
+    <main class="dashboard-content">
+        
+        <header class="header-com-acao">
+            <div>
+                <h1>Grade de Estudos</h1>
+                <p>Organize suas matérias e tópicos.</p>
+            </div>
+            <button type="button" id="btn-nova-materia">+ Nova matéria</button>
+        </header>
+
+        <!-- Formulário para Cadastro de Nova Matéria -->
+        <section id="secao-form-materia" class="card-detalhe">
+            <h2>Nova matéria</h2>
+            <p>Cadastre uma nova disciplina na sua grade.</p>
+
+            <form action="grade.html" method="POST">
+                <div>
+                    <label for="nome-materia">Nome da matéria:*</label>
+                    <input type="text" id="nome-materia" name="nome_materia" placeholder="Ex: Engenharia de Software" required>
+                </div>
+
+                <div>
+                    <label for="topico">Tópico (ex: Prova, Trabalho, Projeto):</label>
+                    <input type="text" id="topico" name="topico" placeholder="Digite o tópico principal">
+                </div>
+
+                <div>
+                    <label for="descricao-atividade">Descrição / Atividade:</label>
+                    <textarea id="descricao-atividade" name="descricao_atividade" rows="3" placeholder="Detalhes das tarefas ou assuntos"></textarea>
+                </div>
+
+                <button type="submit">Salvar matéria</button>
+            </form>
+        </section>
+
+        <!-- Listagem das Matérias Cadastradas (Exemplo de Estado Preenchido) -->
+        <section class="container-materias">
+            
+            <!-- Card de Exemplo de Matéria Cadastrada -->
+            <article class="card-materia">
+                <header class="materia-header">
+                    <h3>Engenharia de Software</h3>
+                    <p>Concluído: <strong>10 de 12</strong> tópicos</p>
+                </header>
+
+                <!-- Lista de Tópicos e Atividades da Matéria -->
+                <div class="topicos-lista">
+                    <h4>Tópicos e Atividades:</h4>
+                    
+                    <div class="topico-item">
+                        <input type="checkbox" id="topico-1" name="topicos" checked>
+                        <label for="topico-1">
+                            <strong>[Prova 1]</strong> Leitura dos requisitos e diagramas de caso de uso
+                        </label>
+                    </div>
+
+                    <div class="topico-item">
+                        <input type="checkbox" id="topico-2" name="topicos">
+                        <label for="topico-2">
+                            <strong>[Projeto]</strong> Implementação das telas HTML e estilização CSS
+                        </label>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>StudyFlow &copy; 2026</p>
+    </footer>
+
+</body>
+</html>

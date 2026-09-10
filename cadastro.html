@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Study - Cadastro</title>
+    <link rel="stylesheet" href="frontend/style.css">
+</head>
+<body>
+
+    <main>
+        <section>
+            <!-- Logo e Boas-Vindas -->
+            <div>
+                <img src="assets/logo.png" alt="Logo My Study" width="100">
+                <p>Seja bem-vindo, preencha os dados para cadastro</p>
+            </div>
+
+            <!-- Formulário de Cadastro -->
+            <form action="index.html" method="POST">
+                <div>
+                    <label for="nome">Nome completo:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                </div>
+
+                <div>
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                </div>
+
+                <div>
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" 
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" 
+                           title="A senha deve ter no mínimo 8 caracteres, contendo pelo menos uma letra maiúscula, uma minúscula e um caractere especial." 
+                           placeholder="Sua senha" required>
+                </div>
+
+                <div>
+                    <label for="confirma-senha">Confirmar senha:</label>
+                    <input type="password" id="confirma-senha" name="confirma_senha" placeholder="Repita a senha" required>
+                </div>
+
+                <button type="submit">Finalizar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>StudyFlow &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
