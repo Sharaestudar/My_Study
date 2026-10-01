@@ -31,12 +31,22 @@
             <a href="cadastrar-materia.html" class="btn-primary" style="width: auto; padding: 0.6rem 1.2rem; text-decoration: none;">+ Nova matéria</a>
         </header>
 
-        <!-- Lista Vazia (Primeiro Acesso) -->
-        <section class="card-panel">
-            <h3>Minhas Matérias</h3>
-            <p>Nenhuma matéria cadastrada no momento. Clique no botão "+ Nova matéria" acima para registrar suas disciplinas.</p>
+        <!-- Campo de Pesquisa / Filtro -->
+        <section class="card-panel" style="margin-bottom: 1.5rem;">
+            <label for="campo-busca"><strong>Buscar matéria:</strong></label>
+            <input type="text" id="campo-busca" placeholder="Digite para filtrar as matérias..." style="width: 100%; margin-top: 0.5rem; padding: 0.6rem; border-radius: 6px; border: 1px solid #334155; background-color: #0f172a; color: #fff;">
+        </section>
+
+        <!-- Container onde o JavaScript renderizará as matérias dinamicamente -->
+        <section id="lista-materias">
+            <div class="card-panel">
+                <h3>Minhas Matérias</h3>
+                <p>Nenhuma matéria cadastrada no momento. Preencha o formulário para adicionar disciplinas.</p>
+            </div>
         </section>
     </main>
 
+    <script src="frontend/script.js"></script>
+    
 </body>
 </html>
